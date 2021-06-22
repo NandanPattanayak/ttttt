@@ -4,14 +4,14 @@
 ### Description
 heligeo module provides you high level geoprocessing and routing services 
 
-** routes
-** isochrone
-** polygon_union
-** polygon_intersection
-** alias_multistring
-** point_buffer
-** line_buffer
-** point_within_polygon
+**routes**
+**isochrone**
+**polygon_union**
+**polygon_intersection**
+**alias_multistring**
+**point_buffer**
+**line_buffer**
+**point_within_polygon**
 
 ### How to get Api Key
 [Visit Website](https://heliware.co.in/) to Access the ApiKey
