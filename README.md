@@ -3,21 +3,24 @@
 
 ### Description
 heligeo module provides you high level geoprocessing and routing services 
+---
 
-**routes**
-**isochrone**
-**polygon_union**
-**polygon_intersection**
-**alias_multistring**
-**point_buffer**
-**line_buffer**
-**point_within_polygon**
+* `routes`
+* `isochrone`
+* `polygon_union`
+* `polygon_intersection`
+* `alias_multistring`
+* `point_buffer`
+* `line_buffer`
+* `point_within_polygon`
+
+***
 
 ### How to get Api Key
 [Visit Website](https://heliware.co.in/) to Access the ApiKey
 
 ### Requirements
-heligeo-py is tested over Python>=3.0
+`heligeo-py` is tested over `Python>=3.0`
 
 ## Installation
 To install from PyPI, simply use pip:
@@ -30,13 +33,13 @@ Most of the cases heligeo Polygon,Point,Lisestring data that format must be geoj
 
 ### Basic Example Of Routing Service 
 By default heligeo support four type of transport mode 
-* drive
-* walk
-* bike
-* cycling
+* `drive`
+* `walk`
+* `bike`
+* `cycling`
 
 #### Output format 
-Output always Geojson response
+Output always `Geojson` response
 #### Isochrone Service
 ``` 
     from heligeo import heliRouteService
