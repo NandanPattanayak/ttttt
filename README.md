@@ -1,19 +1,20 @@
-# heligeo
-Perform all the routing task.
 
 ## Quickstart
 
 ### Description
 heligeo module provides you high level geoprocessing and routing services 
 
-* routes
-* isochrone
-* polygon_union
-* polygon_intersection
-* alias_multistring
-* point_buffer
-* line_buffer
-* point_within_polygon
+** routes
+** isochrone
+** polygon_union
+** polygon_intersection
+** alias_multistring
+** point_buffer
+** line_buffer
+** point_within_polygon
+
+### How to get Api Key
+[Visit Website](https://heliware.co.in/) to Access the ApiKey
 
 ### Requirements
 heligeo-py is tested over Python>=3.0
@@ -33,7 +34,10 @@ By default heligeo support four type of transport mode
 * walk
 * bike
 * cycling
+
+#### Output format 
 Output always Geojson response
+#### Isochrone Service
 ``` 
     from heligeo import heliRouteService
     apikey = ''
@@ -41,7 +45,9 @@ Output always Geojson response
     latitude = [22.5726]
     transport_mode = "drive" 
     isochrone_data = heliRouteService.isochrone(apikey,latitude,longtitude,transport_mode)
-
+```
+#### Routing Service
+```
     apikey = ''
     transport_mode = "drive" 
     direction_coordinates = [[88.3639,22.5726],[72.8777,19.0760]] ### user can use multiple points
@@ -50,11 +56,11 @@ Output always Geojson response
 ```
 
 ### Basic Example Of Geoprocessing Service 
-* heliGeoprocessingService.Union() function  accept multiple polygon data inside a list.
+* heliGeoprocessingService.Union(),heliGeoprocessingService.Intersection(apikey,polygon_list) function  accept multiple polygon data inside a list.
 * In this example we shown only 2 polygon data 
 
 
-#### Uniom Example
+#### Polygon Union Example
 ```
     from heligeo import heliGeoprocessingService
     apikey = ''
@@ -74,7 +80,7 @@ Output always Geojson response
     union_data = heliGeoprocessingService.Union(apikey,polygon_list)
 
 ```
-#### Intersection Example 
+#### Polygon Intersection Example 
 
 ```
     from heligeo import heliGeoprocessingService
@@ -96,6 +102,7 @@ Output always Geojson response
 ```
 
 #### PointBuffer Example 
+point_list accept multiple points data 
 ```
     apikey = ''
     point_list = [[88.3639,22.5726]] ### user can user multiple Point inside a list 
@@ -105,6 +112,7 @@ Output always Geojson response
 ```
 
 #### LineBuffer Example 
+linestring_point_list accept multiple linestring.
 ```   
 
     apikey = ''
