@@ -59,7 +59,7 @@ Output always `Geojson` response
 ```
 
 ### Basic Example Of Geoprocessing Service 
-* heliGeoprocessingService.Union(),heliGeoprocessingService.Intersection(apikey,polygon_list) function  accept multiple polygon data inside a list.
+* `heliGeoprocessingService.Union()`,`heliGeoprocessingService.Intersection()` function  accept multiple polygon data inside a list.
 * In this example we shown only 2 polygon data 
 
 
