@@ -40,7 +40,7 @@ Output always Geojson response
     longtitude = [88.3639]
     latitude = [22.5726]
     transport_mode = "drive" 
-    isochrone_data = heliRouteService.isochrone(apikey,longtitude,latitude,transport_mode)
+    isochrone_data = heliRouteService.isochrone(apikey,latitude,longtitude,transport_mode)
 
     apikey = ''
     transport_mode = "drive" 
@@ -54,43 +54,82 @@ Output always Geojson response
 * In this example we shown only 2 polygon data 
 
 
+#### Uniom Example
 ```
     from heligeo import heliGeoprocessingService
     apikey = ''
-    polygon1 = {"type": "FeatureCollection","features":["type": "Feature","geometry": {"type": "Polygon",
-               "coordinates": [[[77.4029103817493, 28.36918941103731, 0.0], [77.40184896262588, 28.3722403721131, 0.0],     [77.39922678901301, 28.37081966588294, 0.0], [77.40030856003351, 28.36816909494472, 0.0], [77.  4029103817493, 28.36918941103731, 0.0]]]
-             }]}
-    polygon2 = {"type": "FeatureCollection","features":["type": "Feature","geometry": {"type": "Polygon",
-               "coordinates": [[[77.40486731638147, 28.36831967535351, 0.0], [77.40416140548453, 28.37080235923333, 0.0]    , [77.40218550684746, 28.3699755298779, 0.0], [77.40187364471585, 28.36769815943599, 0.0], [77. 40486731638147, 28.36831967535351, 0.0]]]
-             }]}
+    polygon1 = {"type": "FeatureCollection","features":[{
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[77.4029103817493, 28.36918941103731, 0.0], [77.40184896262588, 28.3722403721131, 0.0], [77.39922678901301, 28.37081966588294, 0.0], [77.40030856003351, 28.36816909494472, 0.0], [77.4029103817493, 28.36918941103731, 0.0]]]
+      }}]}
+    polygon2 = {"type": "FeatureCollection","features":[{
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[[77.40486731638147, 28.36831967535351, 0.0], [77.40416140548453, 28.37080235923333, 0.0], [77.40218550684746, 28.    3699755298779, 0.0], [77.40187364471585, 28.36769815943599, 0.0], [77.40486731638147, 28.36831967535351, 0.0]]]
+          }}]}
     polygon_list = [polygon1,polygon2]
     union_data = heliGeoprocessingService.Union(apikey,polygon_list)
-    intersection_data = heliGeoprocessingService.Intersection(apikey,polygon_list)
 
+```
+#### Intersection Example 
+
+```
+    from heligeo import heliGeoprocessingService
+    apikey = ''
+    polygon1 = {"type": "FeatureCollection","features":[{
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[77.4029103817493, 28.36918941103731, 0.0], [77.40184896262588, 28.3722403721131, 0.0], [77.39922678901301, 28.37081966588294, 0.0], [77.40030856003351, 28.36816909494472, 0.0], [77.4029103817493, 28.36918941103731, 0.0]]]
+      }}]}
+    polygon2 = {"type": "FeatureCollection","features":[{
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [[[77.40486731638147, 28.36831967535351, 0.0], [77.40416140548453, 28.37080235923333, 0.0], [77.40218550684746, 28.    3699755298779, 0.0], [77.40187364471585, 28.36769815943599, 0.0], [77.40486731638147, 28.36831967535351, 0.0]]]
+          }}]}
+    polygon_list = [polygon1,polygon2]
+    intersection_data = heliGeoprocessingService.Intersection(apikey,polygon_list)
+```
+
+#### PointBuffer Example 
+```
     apikey = ''
     point_list = [[88.3639,22.5726]] ### user can user multiple Point inside a list 
     area = 100  ### how area user want to conver from this point by default its meter
     point_buffer_polygon=heliGeoprocessingService.PointBuffer(apikey,point_list,area)
 
+```
+
+#### LineBuffer Example 
+```   
+
     apikey = ''
     linestring_point_list = [[[88.3639,22.5726],[88.4143,22.5797]],[[88.2636,22.5958],[88.4789,22.7248]]] ### user can  user multiple Point inside a list 
     area = 100  ### how area user want to conver from this point by default its meter
     linestring_buffer_polygon=heliGeoprocessingService.LineBuffer(apikey,linestring_point_list,area)
-
+```
+#### PointWithinPoly
+```
     apikey = ''
     point_geojson_object = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":                  {"type":"Point""coordinates":[76.95513342,28.46301607]}}]}
     polygon_list = [polygon1,polygon2]
     point_inside_poly = heliGeoprocessingService.PointWithinPoly(apikey,point_geojson_object,polygon_list)
 
+```
+#### AliasLinestring
+```
     apikey = ''
-    linestring_geojson_object = {"type": "FeatureCollection","features":[{"type": "Feature","geometry":     {"type":"LineString",
+    linestring_geojson_object = {"type": "FeatureCollection","features":[{"type": "Feature","geometry":{"type":"LineString",
         "coordinates": [
           [88.3639,22.5726],[88.4143,22.5797]
         ]}}]}
     gap = 100 #gap between multiple linestring(meter)
     quantity = 100 ## how many line string u need 
-    alias_linestring_data = heliGeoprocessingService.AliasLinestring(ak,data,gap,quantity)
-
+    alias_linestring_data = heliGeoprocessingService.AliasLinestring(apikey,linestring_geojson_object,gap,quantity)
 
 ```
 
